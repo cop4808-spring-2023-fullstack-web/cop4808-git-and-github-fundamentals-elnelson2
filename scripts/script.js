@@ -51,6 +51,9 @@ function clickButton() {
             } else if(buttons[i].classList.contains('squareroot')){
                 squareroot(displayValue);
                 updateDisplay();
+            } else if(buttons[i].classList.contains('nlog')){
+                nlog(displayValue);
+                updateDisplay();
             }
         }
     )}
@@ -169,6 +172,16 @@ function squared(num){
 // Added square root function
 function squareroot(num){
     displayValue = roundAccurately(Math.sqrt(num), 15).toString();
+    // need to reset everything as bugs were found since we are only using one operand 
+    firstOperand = displayValue;
+    secondOperand = null;
+    firstOperator = null;
+    secondOperator = null;
+    result = null;
+}
+
+function nlog(num){
+    displayValue = roundAccurately(Math.log(num), 15).toString();
     // need to reset everything as bugs were found since we are only using one operand 
     firstOperand = displayValue;
     secondOperand = null;
