@@ -48,6 +48,9 @@ function clickButton() {
             } else if(buttons[i].classList.contains('squared')){
                 squared(displayValue);
                 updateDisplay();
+            } else if(buttons[i].classList.contains('squareroot')){
+                squareroot(displayValue);
+                updateDisplay();
             }
         }
     )}
@@ -155,7 +158,18 @@ function inputSign(num) {
 // Added function to squared button on calculator
 function squared(num){
     displayValue = roundAccurately(num * num, 15).toString();
-    // need to reset everything as bugs were found
+    // need to reset everything as bugs were found since we are only using one operand 
+    firstOperand = displayValue;
+    secondOperand = null;
+    firstOperator = null;
+    secondOperator = null;
+    result = null;
+}
+
+// Added square root function
+function squareroot(num){
+    displayValue = roundAccurately(Math.sqrt(num), 15).toString();
+    // need to reset everything as bugs were found since we are only using one operand 
     firstOperand = displayValue;
     secondOperand = null;
     firstOperator = null;
@@ -173,6 +187,7 @@ function clearDisplay() {
 }
 
 function inputBackspace() {
+    //console.log("here")
     if(firstOperand != null) {
         firstOperand = null;
         updateDisplay();
