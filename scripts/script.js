@@ -24,6 +24,7 @@ updateDisplay();
 function clickButton() {
     for(let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function() {
+            //console.log("in here");
             if(buttons[i].classList.contains('operand')) {
                 inputOperand(buttons[i].value);
                 updateDisplay();
@@ -41,9 +42,13 @@ function clickButton() {
             } else if(buttons[i].classList.contains('sign')) {
                 inputSign(displayValue);
                 updateDisplay();
-            } else if(buttons[i].classList.contains('clear'))
+            } else if(buttons[i].classList.contains('clear')){
                 clearDisplay();
                 updateDisplay();
+            } else if(buttons[i].classList.contains('squared')){
+                squared(displayValue);
+                updateDisplay();
+            }
         }
     )}
 }
@@ -145,6 +150,17 @@ function inputPercent(num) {
 
 function inputSign(num) {
     displayValue = (num * -1).toString();
+}
+
+// Added function to squared button on calculator
+function squared(num){
+    displayValue = roundAccurately(num * num, 15).toString();
+    // need to reset everything as bugs were found
+    firstOperand = displayValue;
+    secondOperand = null;
+    firstOperator = null;
+    secondOperator = null;
+    result = null;
 }
 
 function clearDisplay() {
