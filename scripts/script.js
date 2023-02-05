@@ -180,6 +180,7 @@ function squareroot(num){
     result = null;
 }
 
+// Added natural log function 
 function nlog(num){
     displayValue = roundAccurately(Math.log(num), 15).toString();
     // need to reset everything as bugs were found since we are only using one operand 
@@ -220,6 +221,9 @@ function operate(x, y, op) {
         } else {
         return x / y;
         }
+    } else if (op === 'e') {        // Added power of function to calculator
+        console.log("exponential func call"); 
+        return Math.pow(x,y);
     }
 }
 
